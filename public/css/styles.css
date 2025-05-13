@@ -22,33 +22,34 @@ html, body {
 
 /******* Wrapper *******/
 #wrapper {
-  width: 80%;
-  max-width: 1200px;
+  width: 95%; /* More suitable for mobile, takes up most of the screen */
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0.5rem; /* Slightly less padding for mobile */
   background: white;
   border-radius: 10px;
-  border: 5px solid var(--main-accent);
+  border: 3px solid var(--main-accent); /* Slightly thinner border for mobile */
 }
 
 /******* Header *******/
 #top-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column; /* Stack elements vertically on mobile */
+  align-items: center;   /* Center align items in the column */
+  text-align: center;    /* Center text within elements */
   background-color: rgba(185, 183, 183, 0.6);
-  padding: 1rem;
+  padding: 0.5rem;       /* Adjusted padding */
 }
 
 .siteName a {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Slightly smaller for mobile */
   font-weight: bold;
   color: black;
   text-decoration: none;
+  margin-bottom: 0.5rem; /* Add space between site name and tools when stacked */
 }
 
 #tools a {
-  font-size: 1rem;
+  font-size: 0.9rem; /* Slightly smaller for mobile */
   font-weight: bold;
   color: black;
   text-decoration: none;
@@ -61,116 +62,123 @@ html, body {
 /******* Navigation *******/
 nav {
   background-color: var(--nav-background);
-  padding: 1rem;
+  padding: 0.5rem; /* Adjusted padding */
 }
-
 
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: space-around;
-  gap: 1rem;
+  flex-direction: column; /* Stack nav items vertically */
+  align-items: center;   /* Center nav items */
+  gap: 0.5rem;           /* Space between stacked items */
   margin: 0;
   padding: 0;
 }
 
 nav ul li {
-  display: inline;
-  color: var(--nav-text)
+  display: block; /* Ensure full width for easier tapping */
+  width: 100%;    /* Make list items take full width */
+  text-align: center; /* Center text within list items */
+  color: var(--nav-text);
 }
 
 nav ul li a {
   color: var(--nav-text);
   text-decoration: none;
   font-weight: bold;
-  padding: 0.5rem 1rem;
-  transition: color 0.3s ease-in-out;
+  padding: 0.75rem 1rem; /* Generous padding for tap targets */
+  display: block; /* Make the link fill the li for better tap area */
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 nav ul li a:hover {
   color: var(--hover-color);
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover for mobile nav items */
 }
 
 /******* Hero Section *******/
 .hero {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Stack image and tag on mobile */
   align-items: center;
-  position: relative;
+  position: relative; /* Keep relative for potential absolute children IF needed, but #herotag will be static for mobile */
   padding: 1rem;
 }
 
 .hero img {
   width: 100%;
-  max-width: 800px;
+  /* max-width: 800px; Removed for mobile, can be added back for desktop */
   border-radius: 10px;
+  margin-bottom: 1rem; /* Space between image and tag */
 }
 
 #herotag {
-  position: absolute;
-  top: 15%;
-  left: 10%;
+  /* position: absolute; Removed for mobile, will be part of normal flow */
+  /* top: 15%; Removed */
+  /* left: 10%; Removed */
   background-color: rgba(255, 255, 255, 0.85);
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  width: 90%; /* Control width on mobile */
+  text-align: center; /* Center content within the tag */
 }
 
 #herotag h3 {
-  margin: 0;
-  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0; /* Add bottom margin */
+  font-size: 1.3rem; /* Adjusted for mobile */
 }
 
 #herotag p {
   margin: 0.5rem 0;
+  font-size: 0.9rem; /* Adjusted for mobile */
 }
 
 #herotag img {
-  width: 100px;
+  width: 80px; /* Slightly smaller for mobile */
   height: auto;
+  display: block; /* To allow margin auto to work */
+  margin: 0.5rem auto 0; /* Center the image */
 }
 
 /******* Upgrades & Reviews *******/
 .info {
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column-reverse; /* Stack and reverse order for mobile (as per original) */
+  align-items: center; /* Center items when stacked */
+  gap: 1rem; /* Space between stacked cards */
+  padding: 1rem; /* Adjusted padding */
 }
 
 .card {
-  flex: 1;
+  flex: 1; /* Will behave like width: 100% in a column flex container */
+  width: 90%; /* Or specific width like 90% as in original mobile styles */
   padding: 1rem;
   background: #f8f8f8;
   border-radius: 8px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem; /* Space between stacked cards, ensure this is managed if not using gap */
+}
+.card:last-child {
+  margin-bottom: 0; /* Remove margin from the last card if not using gap effectively */
 }
 
 #upgrade-images {
   display: grid;
-  /* This line is changed: */
-  grid-template-columns: repeat(2, 1fr); /* Creates 2 columns of equal width */
+  grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile is fine */
   gap: 1rem;
   text-align: center;
 }
 
 #upgrade-images img {
-  max-width: 100%; /* Ensure image doesn't overflow its cell */
-  height: auto;    /* Maintain aspect ratio */
-  display: block;  /* Removes extra space below inline images */
-  padding: 10px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  padding: 40px;
   border-radius: 5px;
-  margin: 0 auto;  /* centered image if it's smaller than the cell */
+  margin: 0 auto;
   background-color: var(--main-accent);
 }
-
-/* .upgrades-image img {
-  width: 100px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: var(--main-accent);
-} */
 
 .upgrades-image a {
   text-decoration: none;
@@ -198,42 +206,13 @@ footer {
   color: black;
 }
 
-/* VEHICLE INFO */
-
-/******* Responsive Design *******/
-@media only screen and (max-width: 768px) {
-  #top-header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .info {
-    /* Changed from 'column' to 'column-reverse' */
-    flex-direction: column-reverse;
-    align-items: center;
-    padding: 1rem;
-  }
-
-  /* If your .card elements also need styling for small screens, add it here */
-  .card {
-    width: 90%; /* Or whatever width you prefer */
-    margin-bottom: 1rem; /* Add some space between stacked cards */
-  }
-  .card:last-child {
-    margin-bottom: 0; /* Optional: remove margin from the very last card */
-  }
-}
-  /*#upgrade-images {
-    grid-template-columns: repeat(2, 1fr);
-  }*/
+/* VEHICLE INFO - (Assuming this is a placeholder or for other CSS files) */
 
 
-@media only screen and (min-width: 768px) {
+/******* Responsive Design - Tablet and Desktop Overrides *******/
+
+/* Common Tablet/Desktop Breakpoint (adjust as needed) */
+@media only screen and (min-width: 769px) {
   body {
     background-image: linear-gradient(45deg, #000 25%, transparent 25%),
                       linear-gradient(45deg, transparent 75%, #000 75%),
@@ -241,4 +220,105 @@ footer {
                       linear-gradient(45deg, #000 25%, #fff 25%);
     background-size: 100px 100px;
     background-position: 0 0, 0 0, -50px -50px, 50px 50px;
-  }}
+  }
+
+  #wrapper {
+    width: 80%;
+    max-width: 1200px;
+    padding: 1rem; /* Restore original padding */
+    border-width: 5px; /* Restore original border width */
+  }
+
+  #top-header {
+    flex-direction: row; /* Elements side-by-side */
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem; /* Restore original padding */
+    text-align: left; /* Reset text align */
+  }
+
+  .siteName a {
+    font-size: 2rem; /* Restore original size */
+    margin-bottom: 0; /* Remove bottom margin as it's no longer stacked */
+  }
+
+  #tools a {
+    font-size: 1rem; /* Restore original size */
+  }
+
+  nav {
+    padding: 1rem; /* Restore original padding */
+  }
+
+  nav ul {
+    flex-direction: row; /* Nav items side-by-side */
+    justify-content: space-around;
+    gap: 1rem; /* Restore original gap */
+    align-items: center; /* Ensure vertical alignment is good */
+  }
+
+  nav ul li {
+    display: inline; /* Original display type */
+    width: auto;     /* Reset width */
+    text-align: left; /* Reset text align */
+  }
+
+  nav ul li a {
+    padding: 0.5rem 1rem; /* Restore original padding */
+    display: inline-block; /* Or inline, depending on desired behavior with padding */
+  }
+   nav ul li a:hover {
+    background-color: transparent; /* Remove mobile hover background if not desired */
+  }
+
+
+  .hero {
+    flex-direction: row; /* Default flex direction for larger screens */
+    justify-content: center; /* As per original */
+    align-items: center; /* As per original */
+  }
+
+  .hero img {
+    max-width: 800px; /* Restore max-width */
+    margin-bottom: 0; /* Remove margin if tag is absolutely positioned */
+  }
+
+  #herotag {
+    position: absolute; /* Restore absolute positioning */
+    top: 15%;
+    left: 10%;
+    width: auto; /* Let content define width or set specific one */
+    text-align: left; /* Reset text align */
+    margin-top: 0; /* Reset margin */
+  }
+
+  #herotag h3 {
+    font-size: 1.5rem; /* Restore original size */
+  }
+   #herotag p {
+    font-size: 1rem; /* Or whatever the original was, if different */
+  }
+  #herotag img {
+    width: 100px; /* Restore size */
+    display: inline-block; /* Or as per original design, if it was part of text flow */
+    margin: 0; /* Reset margin */
+  }
+
+
+  .info {
+    flex-direction: row; /* Side-by-side for cards */
+    justify-content: space-between;
+    gap: 2rem; /* Restore original gap */
+    padding: 2rem; /* Restore original padding */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    align-items: flex-start; /* Align cards to the top */
+  }
+
+  .card {
+    flex: 1; /* Allow cards to grow and shrink */
+    width: auto; /* Reset width to allow flex to manage it */
+    min-width: 250px; /* Optional: prevent cards from becoming too narrow */
+    margin-bottom: 0; /* Remove bottom margin as they are no longer stacked by default */
+  }
+
+  
