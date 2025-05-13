@@ -4,3 +4,241 @@
 *:after {
   box-sizing: border-box;
 }
+
+:root {
+  --primary-background: #fff;
+  --main-accent: #01b0d3;
+  --nav-background: #222;
+  --nav-text: #fff;
+  --hover-color: #01a0c3;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--primary-background);
+}
+
+/******* Wrapper *******/
+#wrapper {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  border: 5px solid var(--main-accent);
+}
+
+/******* Header *******/
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(185, 183, 183, 0.6);
+  padding: 1rem;
+}
+
+.siteName a {
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+#tools a {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+#tools a:hover {
+  color: var(--main-accent);
+}
+
+/******* Navigation *******/
+nav {
+  background-color: var(--nav-background);
+  padding: 1rem;
+}
+
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  color: var(--nav-text)
+}
+
+nav ul li a {
+  color: var(--nav-text);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: var(--hover-color);
+}
+
+/******* Hero Section *******/
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+}
+
+.hero img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+#herotag {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#herotag h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#herotag p {
+  margin: 0.5rem 0;
+}
+
+#herotag img {
+  width: 100px;
+  height: auto;
+}
+
+/******* Upgrades & Reviews *******/
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  padding: 1rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#upgrade-images {
+  display: grid;
+  /* This line is changed: */
+  grid-template-columns: repeat(2, 1fr); /* Creates 2 columns of equal width */
+  gap: 1rem;
+  text-align: center;
+}
+
+#upgrade-images img {
+  max-width: 100%; /* Ensure image doesn't overflow its cell */
+  height: auto;    /* Maintain aspect ratio */
+  display: block;  /* Removes extra space below inline images */
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 auto;  /* centered image if it's smaller than the cell */
+  background-color: var(--main-accent);
+}
+
+/* .upgrades-image img {
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--main-accent);
+} */
+
+.upgrades-image a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.upgrades-image a:hover {
+  color: var(--main-accent);
+}
+
+/******* Footer *******/
+footer {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid var(--main-accent);
+}
+
+.copyright {
+  color: black;
+}
+
+/* VEHICLE INFO */
+
+/******* Responsive Design *******/
+@media only screen and (max-width: 768px) {
+  #top-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info {
+    /* Changed from 'column' to 'column-reverse' */
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  /* If your .card elements also need styling for small screens, add it here */
+  .card {
+    width: 90%; /* Or whatever width you prefer */
+    margin-bottom: 1rem; /* Add some space between stacked cards */
+  }
+  .card:last-child {
+    margin-bottom: 0; /* Optional: remove margin from the very last card */
+  }
+}
+  /*#upgrade-images {
+    grid-template-columns: repeat(2, 1fr);
+  }*/
+
+
+@media only screen and (min-width: 768px) {
+  body {
+    background-image: linear-gradient(45deg, #000 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #000 75%),
+                      linear-gradient(45deg, transparent 75%, #000 75%),
+                      linear-gradient(45deg, #000 25%, #fff 25%);
+    background-size: 100px 100px;
+    background-position: 0 0, 0 0, -50px -50px, 50px 50px;
+  }}
