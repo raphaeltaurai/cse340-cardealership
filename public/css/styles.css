@@ -320,5 +320,4 @@ footer {
     min-width: 250px; /* Optional: prevent cards from becoming too narrow */
     margin-bottom: 0; /* Remove bottom margin as they are no longer stacked by default */
   }
-
-  
+}

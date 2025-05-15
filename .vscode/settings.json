@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "cardealrender.com",
+            "connectString": "postgresql://cse340sh:LhL1c06iYpdn35l4hMOf07lRNeTWpQVc@dpg-d0ghr4buibrs73fl34k0-a.ohio-postgres.render.com/cse340sh_hwws"
+        }
+    ]
+}
