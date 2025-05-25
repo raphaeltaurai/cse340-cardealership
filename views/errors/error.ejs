@@ -1,0 +1,21 @@
+<main class="error-container">
+    <% if (title) { %>
+        <h1 class="error-title"><%= title %></h1>
+    <% } else { %>
+        <h1 class="error-title">Oops! Something went wrong</h1>
+    <% } %>
+
+    <!-- Secure error message -->
+    <p class="error-message"><%= message %></p>
+
+    <!-- Action links -->
+    <p class="error-hint">
+        Looks like you're lost! Try going <a href="/" class="error-link">home</a> or 
+        <a href="javascript:history.back()" class="error-link">go back</a>.
+    </p>
+
+    <!-- Fun error image -->
+    <div class="error-image">
+        <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="Lost in space">
+    </div>
+</main>
