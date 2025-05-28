@@ -206,12 +206,148 @@ footer {
   color: black;
 }
 
+/*Error message large screen*/
+
+  .error-container {
+    text-align: center;
+    margin: 50px auto;
+  }
+  .error-title {
+    color: #d9534f;
+    font-size: 2rem;
+  }
+  .error-message {
+    font-size: 1.2rem;
+  }
+  .error-nav {
+    margin: 20px 0;
+  }
+  .error-hint {
+    font-size: 1rem;
+  }
+  .error-link {
+    color: #005f73;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .error-link:hover {
+    text-decoration: underline;
+  }
+  .error-image img {
+    max-width: 300px;
+    margin-top: 20px
+  }
+  /*login Error*/
+  /* Error Messages */
+  .notice {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+
+  /* Enhanced Vehicle Detail View */
+  #vehicle-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  #vehicle-image {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  #vehicle-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .vehicle-display {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .vehicle-display h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .vehicle-display p {
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  .vehicle-display strong {
+    color: #4c82af;
+  }
+  
+  /* Enhanced Classification Grid */
+  #inv-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+    list-style: none;
+  }
+  
+  #inv-display li {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  
+  #inv-display li:hover {
+    transform: translateY(-5px);
+  }
+  
+  #inv-display img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .namePrice {
+    padding: 1rem;
+  }
+  
+  .namePrice h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  
+  .namePrice a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .namePrice a:hover {
+    color: #4c82af;
+  }
+  
+  .namePrice span {
+    display: block;
+    color: #4c82af;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+  }
 /* VEHICLE INFO - (Assuming this is a placeholder or for other CSS files) */
 
 
 /******* Responsive Design - Tablet and Desktop Overrides *******/
 
-/* Common Tablet/Desktop Breakpoint (adjust as needed) */
+/* Common Tablet/Desktop Breakpoint */
 @media only screen and (min-width: 769px) {
   body {
     background-image: linear-gradient(45deg, #000 25%, transparent 25%),
@@ -320,4 +456,21 @@ footer {
     min-width: 250px; /* Optional: prevent cards from becoming too narrow */
     margin-bottom: 0; /* Remove bottom margin as they are no longer stacked by default */
   }
+
+  /*vehicle details large screen*/
+  .vehicle-detail {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .vehicle-image {
+    max-width: 50%;
+  }
+
+  .vehicle-info {
+    text-align: left;
+    max-width: 50%;
+  }
+
 }

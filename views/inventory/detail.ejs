@@ -1,0 +1,18 @@
+<main>    
+  <% if (vehicle) { %>
+    <div class="vehicle-detail">
+      <img src="<%= vehicle.inv_image %>" alt="Image of <%= vehicle.inv_make %> <%= vehicle.inv_model %>" class="vehicle-image" />
+      <div class="vehicle-info">
+        <h2>Vehicle Details</h2>
+        <p><strong>Make:</strong> <%= vehicle.inv_make %></p>
+        <p><strong>Model:</strong> <%= vehicle.inv_model %></p>
+        <p><strong>Year:</strong> <%= vehicle.inv_year %></p>
+        <p><strong>Price:</strong> $<%= new Intl.NumberFormat("en-US").format(vehicle.inv_price) %></p>
+        <p><strong>Mileage:</strong> <%= new Intl.NumberFormat("en-US").format(vehicle.inv_miles) %> miles</p>
+        <p><strong>Description:</strong> <%= vehicle.inv_description %></p>
+      </div>
+    </div>
+  <% } else { %>
+    <p class="notice">Sorry, this vehicle could not be found.</p>
+  <% } %>
+</main>
