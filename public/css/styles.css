@@ -474,3 +474,53 @@ footer {
   }
 
 }
+
+/* ===== Account Login Form Styles ===== */
+.account-login-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+  border-color: var(--main-accent);
+  outline: none;
+}
+.account-login-form button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--main-accent);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+.account-login-form button[type="submit"]:hover {
+  background: var(--hover-color);
+}
