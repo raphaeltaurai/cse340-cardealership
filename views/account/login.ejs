@@ -11,14 +11,15 @@
   <div class="form-group">
     <label for="password">Password:</label>
     <div style="position:relative;display:flex;align-items:center;">
-      <input type="password" id="password" name="password" required style="flex:1;">
-      <button type="button" id="togglePassword" aria-label="Show password" style="background:none;border:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:1.2em;">
-        <span id="eyeIcon">👁️</span>
+      <input type="password" class="password-input" id="password" name="password" required>
+      <button type="button" class="toggle-password" aria-label="Show password" style="background:none;border:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:1.2em;">
+        <span class="eye-icon">👁️</span>
       </button>
     </div>
     <p class="form-text">passwords must be at least 8 characters long and contain a mix of letters, numbers, and special characters.</p>
   </div>
   <button type="submit">Login</button>
   <p class="form-text">Don't have an account? <a href="/account/register">Register here</a>.</p>
+</form>
 
-  <script src="js/script.js"</script>
+<script src="/js/script.js"></script>
