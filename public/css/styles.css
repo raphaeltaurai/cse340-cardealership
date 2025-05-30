@@ -524,3 +524,14 @@ footer {
 .account-login-form button[type="submit"]:hover {
   background: var(--hover-color);
 }
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.form-row .form-group {
+  flex: 1 1 150px;
+  min-width: 150px;
+}
