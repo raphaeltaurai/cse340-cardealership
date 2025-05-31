@@ -538,3 +538,21 @@ footer {
   flex: 1 1 150px;
   min-width: 150px;
 }
+
+/****************************
+* input validation styling
+****************************/
+
+input:required:invalid, input:focus:invalid {
+  /* insert your own styles for invalid form input */
+  background-image: url(/images/invalid.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+ }
+
+ input:required:valid {
+  /* insert your own styles for valid form input */
+  background-image: url(/images/valid.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+ }

@@ -3,6 +3,7 @@ const express = require("express")
 const router = new express.Router() 
 const utilities = require("../utilities/")
 const accountController = require("../controllers/accountController")
+const regValidate = require('../utilities/account-validation')
 
 // Route: GET /account
 router.get(
@@ -19,9 +20,13 @@ router.get(
   utilities.handleErrors(accountController.buildRegister)
 );
 
-// Route: POST /account/register
-router.post('/register', utilities.handleErrors(accountController.registerAccount))
-
+// Process the registration data
+router.post(
+  "/register",
+  regValidate.registationRules(),
+  regValidate.checkRegData,
+  utilities.handleErrors(accountController.registerAccount)
+)
 
 // Export the router
 module.exports = router
