@@ -2,22 +2,25 @@
 const express = require("express")
 const router = new express.Router() 
 const utilities = require("../utilities/")
-const accController = require("../controllers/accountController")
+const accountController = require("../controllers/accountController")
 
 // Route: GET /account
 router.get(
-  "/", utilities.handleErrors(accController.buildAccount)
+  "/", utilities.handleErrors(accountController.buildAccount)
 )
 
 // Route: GET /account/login
 router.get(
-  "/login", utilities.handleErrors(accController.buildLogin)
+  "/login", utilities.handleErrors(accountController.buildLogin)
 )
 
-// Route: GET /account/register
 router.get(
-  "/register", utilities.handleErrors(accController.buildRegister)
-)
+  "/register",
+  utilities.handleErrors(accountController.buildRegister)
+);
+
+// Route: POST /account/register
+router.post('/register', utilities.handleErrors(accountController.registerAccount))
 
 
 // Export the router
