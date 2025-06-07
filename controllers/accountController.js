@@ -57,4 +57,15 @@ async function registerAccount(req, res) {
   }
 }
 
-module.exports = {buildLogin, buildRegister, registerAccount}
+async function loginAccount(req, res) {
+  let nav = await utilities.getNav();
+  // Placeholder: In real use, add authentication logic here
+  req.flash("notice", "Login attempted (add authentication logic here).");
+  res.render("account/login", {
+    title: "Login",
+    nav,
+    account_email: req.body.account_email,
+  });
+}
+
+module.exports = {buildLogin, buildRegister, registerAccount, loginAccount}

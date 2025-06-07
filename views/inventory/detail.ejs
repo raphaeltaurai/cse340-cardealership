@@ -1,7 +1,6 @@
-<main>    
   <% if (vehicle) { %>
     <div class="vehicle-detail">
-      <img src="<%= vehicle.inv_image %>" alt="Image of <%= vehicle.inv_make %> <%= vehicle.inv_model %>" class="vehicle-image" />
+      <img src="<%= vehicle.inv_image %>" alt="Image of <%= vehicle.inv_make %> <%= vehicle.inv_model %>" class="vehicle-image">
       <div class="vehicle-info">
         <h2>Vehicle Details</h2>
         <p><strong>Make:</strong> <%= vehicle.inv_make %></p>
@@ -15,4 +14,3 @@
   <% } else { %>
     <p class="notice">Sorry, this vehicle could not be found.</p>
   <% } %>
-</main>
