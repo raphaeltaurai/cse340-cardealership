@@ -1,0 +1,46 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+
+<%- messages() %>
+<% if (typeof errors !== 'undefined' && errors.errors && errors.errors.length > 0) { %>
+  <div class="notice">
+    <ul>
+      <% errors.errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form class="account-login-form" id="addClassificationForm" action="/inv/add-classification" method="post" novalidate>
+  <div class="form-group">
+    <label for="classification_name">Classification Name:</label>
+    <input type="text" id="classification_name" name="classification_name" pattern="^[A-Za-z0-9]+$" maxlength="30" required>
+    <p class="form-text">Classification name must not contain spaces or special characters. Only letters and numbers are allowed.</p>
+  </div>
+  <button type="submit">Add Classification</button>
+</form>
+
+<script>
+// Client-side validation for classification name
+const form = document.getElementById('addClassificationForm');
+if (form) {
+  form.addEventListener('submit', function(e) {
+    const input = form.querySelector('#classification_name');
+    const value = input.value.trim();
+    const pattern = /^[A-Za-z0-9]+$/;
+    let oldError = form.querySelector('.client-error');
+    if (oldError) oldError.remove();
+    if (!pattern.test(value)) {
+      e.preventDefault();
+      const error = document.createElement('p');
+      error.className = 'client-error form-text';
+      error.style.color = '#d9534f';
+      error.textContent = 'Classification name must only contain letters and numbers, with no spaces or special characters.';
+      input.parentElement.appendChild(error);
+      input.focus();
+    }
+  });
+}
+</script> 

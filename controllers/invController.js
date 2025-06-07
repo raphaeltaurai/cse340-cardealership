@@ -54,5 +54,70 @@ invCont.throwError = async function (req, res, next) {
   }
 }
 
+invCont.buildAddInventory = async function(req, res) {
+  let nav = await utilities.getNav();
+  let classificationList = await utilities.buildClassificationList(null);
+  res.render("inventory/add-inventory", {
+    title: "Add Inventory",
+    nav,
+    classificationList,
+    errors: {},
+  });
+};
+
+invCont.addInventory = async function(req, res) {
+  let nav = await utilities.getNav();
+  let classificationList = await utilities.buildClassificationList(req.body.classification_id);
+  const result = await invModel.insertInventory(req.body);
+  if (result.success) {
+    req.flash("notice", "Inventory item added successfully!");
+    nav = await utilities.getNav(); // Rebuild nav to show new item
+    res.render("inventory/management", { title: "Inventory Management", nav });
+  } else {
+    req.flash("notice", "Failed to add inventory item.");
+    res.render("inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      classificationList,
+      ...req.body,
+      errors: result.errors
+    });
+  }
+};
+
+invCont.buildManagement = async function(req, res) {
+  let nav = await utilities.getNav();
+  res.render("inventory/management", {
+    title: "Inventory Management",
+    nav
+  });
+};
+
+invCont.buildAddClassification = async function(req, res) {
+  let nav = await utilities.getNav();
+  res.render("inventory/add-classification", {
+    title: "Add Classification",
+    nav,
+    ...req.body
+  });
+};
+
+invCont.addClassification = async function(req, res) {
+  let nav = await utilities.getNav();
+  const result = await invModel.insertClassification(req.body.classification_name);
+  if (result.success) {
+    req.flash("notice", "Classification added successfully!");
+    nav = await utilities.getNav(); // Rebuild nav to show new classification
+    res.render("inventory/management", { title: "Inventory Management", nav });
+  } else {
+    req.flash("notice", "Failed to add classification.");
+    res.render("inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+      ...req.body,
+      errors: result.errors
+    });
+  }
+};
 
 module.exports = invCont

@@ -69,4 +69,39 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
+
+  // Client-side validation for add inventory form
+  const addInventoryForm = document.getElementById('addInventoryForm');
+  if (addInventoryForm) {
+    addInventoryForm.addEventListener('submit', function(e) {
+      let valid = true;
+      let oldError = addInventoryForm.querySelector('.client-error');
+      if (oldError) oldError.remove();
+      // Check required fields
+      const requiredFields = [
+        'classification_id', 'inv_make', 'inv_model', 'inv_year', 'inv_description', 'inv_image', 'inv_thumbnail', 'inv_price', 'inv_miles', 'inv_color'
+      ];
+      requiredFields.forEach(function(field) {
+        const input = addInventoryForm.querySelector('[name="' + field + '"]');
+        if (input && !input.value.trim()) {
+          valid = false;
+          input.focus();
+        }
+      });
+      // Year validation
+      const year = addInventoryForm.querySelector('#inv_year');
+      if (year && (year.value < 1886 || year.value > 2099)) {
+        valid = false;
+        year.focus();
+      }
+      if (!valid) {
+        e.preventDefault();
+        const error = document.createElement('p');
+        error.className = 'client-error form-text';
+        error.style.color = '#d9534f';
+        error.textContent = 'Please fill out all fields correctly.';
+        addInventoryForm.appendChild(error);
+      }
+    });
+  }
 });
