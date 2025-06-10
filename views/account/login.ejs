@@ -13,7 +13,7 @@
 <% } %>
 
 <%- messages() %>
-<form class="account-login-form" action="/account/login" method="post">
+<form class="account-login-form" id="loginForm" action="/account/login" method="post">
   <div class="form-group">
     <label for="email">Email:</label>
     <input type="email" id="email" name="account_email" placeholder="email@example.com" required value="<%= locals.account_lastname %>">
