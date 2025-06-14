@@ -1,11 +1,28 @@
 <% if (title) { %>
+  <div class="management-section">
     <h1><%= title %></h1>
   <% } else {
     res.redirect('/')
   } %>
   
   <%- messages() %>
-  <div class="management-links" style="margin:2rem 0;display:flex;gap:1.5rem;flex-wrap:wrap;">
+  <div class="management-links">
     <a href="/inv/add-classification" class="btn-main">Add New Classification</a>
     <a href="/inv/add-inventory" class="btn-main">Add New Inventory</a>
   </div>
+
+  <h2>Manage Inventory</h2>
+  <p>Please select a classification from the list to see the items belonging to the classification</p>
+  <% if (typeof classificationList !== 'undefined' && classificationList.length > 0) { %>
+    <div class="classification-select-group">
+      <label for="classificationList" style="font-weight:bold;font-size:1.1rem;">Choose a Classification:</label>
+      <%- classificationList %>
+    </div>
+  <% } else { %>
+    <p>No classifications found.</p>
+  <% } %>
+
+  <table id="inventoryDisplay"></table>
+  <noscript>JavaScript must be enabled to use this page.</noscript>
+</div>
+<script src="/js/inventory.js"></script>

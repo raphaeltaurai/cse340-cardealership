@@ -36,4 +36,32 @@ router.post(
   utilities.handleErrors(accountController.accountLogin)
 )
 
+// Logout route
+router.get("/logout", accountController.logout);
+
+// GET: Deliver account update view
+router.get(
+  "/update/:id",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.deliverUpdateAccount)
+);
+
+// POST: Process account update
+router.post(
+  "/update/:id",
+  utilities.checkLogin,
+  require('../utilities/account-validation').updateAccountRules(),
+  require('../utilities/account-validation').checkUpdateAccountData,
+  utilities.handleErrors(accountController.processUpdateAccount)
+);
+
+// POST: Process password update
+router.post(
+  "/update-password/:id",
+  utilities.checkLogin,
+  require('../utilities/account-validation').updatePasswordRules(),
+  require('../utilities/account-validation').checkUpdatePasswordData,
+  utilities.handleErrors(accountController.processUpdatePassword)
+);
+
 module.exports = router

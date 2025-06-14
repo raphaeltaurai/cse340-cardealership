@@ -580,3 +580,151 @@ input:required:invalid, input:focus:invalid {
     font-size: 1.1rem;
   }
 }
+
+
+
+#classificationList {
+  background: #fffbe6;
+  border: 2px solid #01b0d3;
+  color: #222;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(1,176,211,0.08);
+  margin: 1rem 0 2rem 0;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#classificationList:focus {
+  border-color: #01a0c3;
+  box-shadow: 0 0 0 2px #01b0d355;
+}
+#classificationList option {
+  font-size: 1rem;
+  color: #222;
+  background: #fff;
+}
+
+.classification-select-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Inventory Management Page Styles ===== */
+.management-section {
+  background: #f8fafd;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(1,176,211,0.08);
+  padding: 2rem 2.5rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  border: 1.5px solid var(--main-accent);
+}
+
+.management-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.btn-main {
+  background: var(--main-accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(1,176,211,0.08);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  cursor: pointer;
+  display: inline-block;
+}
+.btn-main:hover, .btn-main:focus {
+  background: var(--hover-color);
+  box-shadow: 0 4px 16px rgba(1,176,211,0.15);
+  transform: translateY(-2px) scale(1.03);
+  color: #fff;
+  text-decoration: none;
+}
+
+.management-section h1, .management-section h2 {
+  color: var(--main-accent);
+  margin-bottom: 0.5rem;
+}
+
+.management-section p {
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive styles for Inventory Management Page */
+@media only screen and (max-width: 600px) {
+  .management-section {
+    padding: 1rem 0.5rem;
+    margin: 1rem 0.25rem;
+    max-width: 100%;
+  }
+  .management-links {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  .btn-main {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .management-section {
+    padding: 3rem 4rem;
+    max-width: 1100px;
+  }
+  .management-links {
+    gap: 2.5rem;
+  }
+  .btn-main {
+    font-size: 1.15rem;
+    padding: 1rem 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #inv-display {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  #inv-display li {
+    margin: 0 0 1rem 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    padding: 0.5rem;
+  }
+  #inv-display img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  .namePrice {
+    padding: 0.75rem 0.5rem;
+  }
+  .namePrice h2 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0.25rem 0;
+  }
+  .namePrice span {
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+  }
+}
