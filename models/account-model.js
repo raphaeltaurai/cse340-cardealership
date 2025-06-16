@@ -35,9 +35,12 @@ async function getAccountByEmail (account_email) {
     const result = await pool.query(
       'SELECT account_id, account_firstname, account_lastname, account_email, account_type, account_password FROM account WHERE account_email = $1',
       [account_email])
-    return result.rows[0]
+    if (result.rows.length === 0) {
+      return null;
+    }
+    return result.rows[0];
   } catch (error) {
-    return new Error("No matching email found")
+    throw error; // Let the controller handle DB errors
   }
 }
 

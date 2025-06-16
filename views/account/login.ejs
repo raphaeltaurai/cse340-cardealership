@@ -13,6 +13,13 @@
 <% } %>
 
 <%- messages() %>
+<% if (typeof notice !== 'undefined' && notice.length > 0) { %>
+  <div class="notice">
+    <% notice.forEach(function(msg) { %>
+      <p><%= msg %></p>
+    <% }) %>
+  </div>
+<% } %>
 <form class="account-login-form" id="loginForm" action="/account/login" method="post">
   <div class="form-group">
     <label for="email">Email:</label>

@@ -12,6 +12,7 @@ async function buildLogin(req, res, next) {
   res.render("account/login", {
     title: "Login",
     nav,
+    notice: req.flash("notice"),
   })
 }
 
@@ -89,41 +90,59 @@ async function loginAccount(req, res) {
  *  Process login request
  * ************************************ */
 async function accountLogin(req, res) {
-  let nav = await utilities.getNav()
-  const { account_email, account_password } = req.body
-  const accountData = await accountModel.getAccountByEmail(account_email)
+  let nav = await utilities.getNav();
+  const { account_email, account_password } = req.body;
+  
+  // This will handle fetching the user from the DB
+  const accountData = await accountModel.getAccountByEmail(account_email);
+
+  // REFINED LOGIC: This single block now handles a non-existent user.
+  // If accountData is null or undefined, the user does not exist.
   if (!accountData) {
-    req.flash("notice", "Please check your credentials and try again.")
-    res.status(400).render("account/login", {
+    req.flash("notice", "Please check your credentials and try again.");
+    // The 'return' statement is crucial to stop the function here.
+    return res.status(400).render("account/login", {
       title: "Login",
       nav,
-      errors: null,
+      errors: null, // No validation errors, this is a logic error
       account_email,
-    })
-    return
+      notice: req.flash("notice"),
+    });
   }
+
   try {
+    // This block now only runs if we found a user.
     if (await bcrypt.compare(account_password, accountData.account_password)) {
-      delete accountData.account_password
-      const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
-      if(process.env.NODE_ENV === 'development') {
-        res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+      delete accountData.account_password;
+      const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 });
+      if (process.env.NODE_ENV === 'development') {
+        res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 });
       } else {
-        res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
+        res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 });
       }
-      return res.redirect("/account/")
-    }
-    else {
-      req.flash("message notice", "Please check your credentials and try again.")
-      res.status(400).render("account/login", {
+      return res.redirect("/account/");
+    } else {
+      // This 'else' handles the case of a correct email but incorrect password.
+      req.flash("notice", "Please check your credentials and try again.");
+      return res.status(400).render("account/login", {
         title: "Login",
         nav,
         errors: null,
         account_email,
-      })
+        notice: req.flash("notice"),
+      });
     }
   } catch (error) {
-    throw new Error('Access Forbidden')
+    // This catch block handles errors during the bcrypt or JWT process
+    console.error("Error during login process:", error);
+    req.flash("notice", "An unexpected error occurred. Please try again.");
+    return res.status(500).render("account/login", {
+      title: "Login",
+      nav,
+      errors: null,
+      account_email,
+      notice: req.flash("notice"),
+    });
   }
 }
 
