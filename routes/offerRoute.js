@@ -5,11 +5,12 @@ const { body } = require('express-validator');
 const utilities = require('../utilities/');
 
 // Show buy car confirmation form
-router.get('/buy/:inv_id', offerController.showBuyCarForm);
+router.get('/buy/:inv_id', utilities.checkClient, offerController.showBuyCarForm);
 
 // Handle offer submission
 router.post(
   '/buy/:inv_id',
+  utilities.checkClient,
   body('offer_price')
     .trim()
     .notEmpty().withMessage('Offer price is required.')
