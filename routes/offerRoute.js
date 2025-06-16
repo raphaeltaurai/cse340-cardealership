@@ -2,6 +2,7 @@ const express = require('express');
 const router = new express.Router();
 const offerController = require('../controllers/offerController');
 const { body } = require('express-validator');
+const utilities = require('../utilities/');
 
 // Show buy car confirmation form
 router.get('/buy/:inv_id', offerController.showBuyCarForm);
@@ -15,5 +16,8 @@ router.post(
     .isFloat({ min: 1 }).withMessage('Offer price must be a positive number.'),
   offerController.submitOffer
 );
+
+// Order inbox for admin/employee
+router.get('/inbox', utilities.checkEmployeeOrAdmin, offerController.showOrderInbox);
 
 module.exports = router; 

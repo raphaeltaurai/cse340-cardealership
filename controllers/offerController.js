@@ -61,4 +61,19 @@ async function submitOffer(req, res) {
   }
 }
 
-module.exports = { showBuyCarForm, submitOffer }; 
+// Show order inbox for admin/employee
+async function showOrderInbox(req, res) {
+  let nav = await require('../utilities/').getNav();
+  try {
+    const offers = await offerModel.getAllPendingOffers();
+    res.render('offers/inbox', {
+      title: 'Order Inbox',
+      nav,
+      offers
+    });
+  } catch (error) {
+    res.status(500).render('errors/500', { title: 'Server Error', nav });
+  }
+}
+
+module.exports = { showBuyCarForm, submitOffer, showOrderInbox }; 

@@ -1,0 +1,41 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+<% if (offers && offers.length > 0) { %>
+  <table class="order-inbox-table" style="width:100%;border-collapse:collapse;margin:2rem 0;">
+    <thead>
+      <tr>
+        <th>Offer Date</th>
+        <th>Vehicle</th>
+        <th>Offer Price</th>
+        <th>Customer</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% offers.forEach(function(offer) { %>
+        <tr>
+          <td><%= new Date(offer.offer_date).toLocaleString() %></td>
+          <td>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <img src="<%= offer.inv_image %>" alt="Photo of <%= offer.inv_year %> <%= offer.inv_make %> <%= offer.inv_model %>" style="width:60px;height:40px;object-fit:cover;border-radius:4px;">
+              <span><%= offer.inv_year %> <%= offer.inv_make %> <%= offer.inv_model %></span>
+            </div>
+          </td>
+          <td>$<%= Number(offer.offer_price).toLocaleString() %></td>
+          <td>
+            <% if (offer.account_firstname) { %>
+              <%= offer.account_firstname %> <%= offer.account_lastname %><br>
+              <%= offer.account_email %>
+            <% } else { %>
+              <em>Guest</em>
+            <% } %>
+          </td>
+          <td><%= offer.status %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p class="notice">No new offers at this time.</p>
+<% } %> 
